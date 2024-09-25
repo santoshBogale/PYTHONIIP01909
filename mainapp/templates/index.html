@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dynamic Web Page</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>My Dynamic Website</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Welcome to My Website</h2>
+            <p>This is a dynamic webpage that displays real-time information and random quotes!</p>
+
+            <!-- Form for collecting user data -->
+            <h3>Submit Your Details:</h3>
+            <form method="POST">
+                {% csrf_token %}  <!-- This token is needed for security in Django -->
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
+
+                <button type="submit">Submit</button>
+            </form>
+
+            <!-- Display submitted data -->
+            {% if name and email %}
+                <h3>Thank you, {{ name }}!</h3>
+                <p>We have received your email: {{ email }}</p>
+            {% endif %}
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Contact us: email@example.com | Phone: 123-456-7890</p>
+        </div>
+    </footer>
+</body>
+</html>
+
+

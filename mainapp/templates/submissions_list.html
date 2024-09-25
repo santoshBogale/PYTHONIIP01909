@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Submissions List</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Submissions</h1>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Submitted User Details</h2>
+            
+            <ul>
+                {% for submission in submissions %}
+                    <li>
+                        <strong>{{ submission.name }}</strong> ({{ submission.email }}) - Submitted at: {{ submission.submitted_at }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Contact us: email@example.com | Phone: 123-456-7890</p>
+        </div>
+    </footer>
+</body>
+</html>
